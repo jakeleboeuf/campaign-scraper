@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+  $(document).ready(function(){
+    $.getJSON( "http://scrape.jklb.co/indiegogo/global-learning-xprize", function( data ) {
+      var items = [];
+      $.each( data, function( key, val ) {
+        items.push( "<li id='" + key + "'>" + val + "</li>" );
+      });
+     
+      $( "<ul/>", {
+        "class": "my-new-list",
+        html: items.join( "" )
+      }).appendTo( "body" );
+    });
+  });
+</script>
+</head>
+<body>
+  <div id="div1">
+    <h2>Get the results please</h2>
+  </div>
+  <div id="results"></di>
+</body>
+</html>
