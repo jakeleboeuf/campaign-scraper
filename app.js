@@ -10,6 +10,7 @@ var fs = require('fs');
 var request = require('request');
 var cheerio = require('cheerio');
 
+// Routes
 var routes = require('./routes/index');
 var indiegogo = require('./routes/api/indiegogo');
 var kickstarter = require('./routes/api/kickstarter');
