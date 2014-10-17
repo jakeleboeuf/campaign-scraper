@@ -3,6 +3,7 @@ var request = require('supertest');
 var cheerio = require('cheerio');
 var express = require('express');
 var projects = require("../routes/indiegogo.js");
+var moment = require('moment');
 var app = require("../app");
 
 describe('GET /indiegogo/global-learning-xprize', function(){
