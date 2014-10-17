@@ -2,51 +2,97 @@ scrape-indiegogo
 ================
 [ ![Codeship Status for jakeleboeuf/scrape-indiegogo](https://codeship.io/projects/6b1dd260-37e4-0132-e8f4-461894a5379e/status?branch=master)](https://codeship.io/projects/41841)
 
-An API for your indiegogo campaigns.
+An API for your indiegogo and kickstarter campaigns.
 
-Just hit `scrape-indiegogo.herokuapp.com/YOUR-PROJECT-SLUG` and you'll get a json representation of your project
+###Usage
+######Indiegogo Projects:
+You can make requests to the scraper just like you would expect. Something like this will get headed in the right direction:
+
+```html
+
+```
+
+[scrape.jklb.co/YOUR-PROJECT-SLUG](http://scrape.jklb.co/indiegogo/global-learning-xprize) will give you a great JSON representation of your campaign.
 
 
-#####Example output @ scrape-indiegogo.com/global-learning-xprize
+#####Example output @ [scrape.jklb.co/indiegogo/global-learning-xprize](http://scrape.jklb.co/indiegogo/global-learning-xprize)
 
 ```json
-
-{
-  "project": {
-    "title": "Global Learning XPRIZE",
-    "raised": "$269,563",
-    "goal": "$500,000",
-    "timeLeft": "21 days left",
-    "percentRaised": "54%"
+"project": {
+  "title": "Global Learning XPRIZE",
+  "url": "http://indiegogo.com/projects/global-learning-xprize",
+  "backers": "1,341",
+  "raised": "$269,563",
+  "goal": "$500,000",
+  "percentRaised": "54%",
+  "ends": "in 20 days"
+},
+"perks": [
+  {
+    "title": "EARLY ACCESS package",
+    "amount": "$25",
+    "url": "http://www.indiegogo.com/projects/global-learning-xprize/contributions/new?perk_amt=25&perk_id=2314758",
+    "description": "With this perk get early access to this revolutionary software, 18 months\nbefore anyone else, to test with kids near you.\n\nIn addition to the previous perks, you also get:\n\n · A Vote: As a Digital Visioneer you will get a vote where the XPRIZE\nFoundation should launch its next major competition.\n · Credit: Get your name credited in the winning software that is used by\nhundreds of millions of kids.\n · Digital Content: Exclusive extended digital content (interviews,\nvideos, images, and more!)",
+    "deliveryDate": "",
+    "claimed": 186,
+    "available": "Unlimited"
   },
-  "perks": [
-    {
-      "title": "EARLY ACCESS package",
-      "amount": "$25",
-      "url": "http://www.indiegogo.com/projects/global-learning-xprize/contributions/new?perk_amt=25&perk_id=2314758",
-      "description": "With this perk get early access to this revolutionary software, 18 months\nbefore anyone else, to test with kids near you.\n\nIn addition to the previous perks, you also get:\n\n · A Vote: As a Digital Visioneer you will get a vote where the XPRIZE\nFoundation should launch its next major competition.\n · Credit: Get your name credited in the winning software that is used by\nhundreds of millions of kids.\n · Digital Content: Exclusive extended digital content (interviews,\nvideos, images, and more!)",
-      "deliveryDate": "",
-      "claimed": 186,
-      "available": "Unlimited"
-    },
-    {
-      "title": "SUPPORTER package",
-      "amount": "$10",
-      "url": "http://www.indiegogo.com/projects/global-learning-xprize/contributions/new?perk_amt=10&perk_id=2314753",
-      "description": "Help bring literacy to hundreds of millions of children around the world by showing your support for the campaign!\n\nIncludes:\n• Website Credit: Get your name listed as a supporter on the Global Learning XPRIZE website!\n• Digital Certificate: Receive a digital donation certificate that you can use to show your support!",
-      "deliveryDate": "",
-      "claimed": 74,
-      "available": "Unlimited"
-    },
-    {
-      "title": "ADVOCATE VISIONEER package",
-      "amount": "$50",
-      "url": "http://www.indiegogo.com/projects/global-learning-xprize/contributions/new?perk_amt=50&perk_id=2314760",
-      "description": "Grab this perk and get an awesome swag bag as well as live video access to\nour Visioneering event, where you can watch and vote on how future XPRIZE\nare created.\n\nGet all the previous perks as well as:\n\n · Watch: Live web video access to our exclusive Visioneering event.\n · Wear: An exclusive, limited edition, Global Learning XPRIZE T-shirt.\n · Represent: Three awesome Global Learning XPRIZE stickers.\n · Show: A neat Global Learning Wristband to show your support!",
-      "deliveryDate": "",
-      "claimed": 165,
-      "available": "Unlimited"
-    }
-  ]
-}
+  {
+    "title": "SUPPORTER package",
+    "amount": "$10",
+    "url": "http://www.indiegogo.com/projects/global-learning-xprize/contributions/new?perk_amt=10&perk_id=2314753",
+    "description": "Help bring literacy to hundreds of millions of children around the world by showing your support for the campaign!\n\nIncludes:\n• Website Credit: Get your name listed as a supporter on the Global Learning XPRIZE website!\n• Digital Certificate: Receive a digital donation certificate that you can use to show your support!",
+    "deliveryDate": "",
+    "claimed": 74,
+    "available": "Unlimited"
+  },
+  {
+    "title": "ADVOCATE VISIONEER package",
+    "amount": "$50",
+    "url": "http://www.indiegogo.com/projects/global-learning-xprize/contributions/new?perk_amt=50&perk_id=2314760",
+    "description": "Grab this perk and get an awesome swag bag as well as live video access to\nour Visioneering event, where you can watch and vote on how future XPRIZE\nare created.\n\nGet all the previous perks as well as:\n\n · Watch: Live web video access to our exclusive Visioneering event.\n · Wear: An exclusive, limited edition, Global Learning XPRIZE T-shirt.\n · Represent: Three awesome Global Learning XPRIZE stickers.\n · Show: A neat Global Learning Wristband to show your support!",
+    "deliveryDate": "",
+    "claimed": 165,
+    "available": "Unlimited"
+  },
+  {...}
+]
+```
+
+######Kickstarter Projects:
+[scrape.jklb.co/YOUR-USERID/YOUR-PROJECT-SLUG](http://scrape.jklb.co/kickstarter/332322466/gram-parsons-cosmic-revival-derry-down) will give you a great JSON representation of your campaign.
+
+#####Example output @ [scrape.jklb.co/indiegogo/global-learning-xprize](http://scrape.jklb.co/indiegogo/global-learning-xprize)
+
+```json
+project: {
+  title: "A N O M A L Y",
+  url: "http://kickstarter.com/projects/639662626/a-n-o-m-a-l-y",
+  backers: 654,
+  raised: "$67302",
+  goal: "$60000",
+  percentRaised: "112%",
+  ends: "a year ago"
+},
+perks: [
+  {
+    title: "Pledge $5 or more",
+    amount: "$5",
+    url: "http://kickstarter.com/projects/639662626/a-n-o-m-a-l-y",
+    description: "Personal shout out on social media.",
+    deliveryDate: "Aug 2013",
+    claimed: 21,
+    available: "Unlimited"
+  },
+  {
+    title: "Pledge $10 or more",
+    amount: "$10",
+    url: "http://kickstarter.com/projects/639662626/a-n-o-m-a-l-y",
+    description: "Downloadable link to original soundtrack. (private use only)",
+    deliveryDate: "Dec 2013",
+    claimed: 22,
+    available: "Unlimited"
+  },
+  {...}
+]
 ```

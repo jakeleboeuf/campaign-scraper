@@ -11,7 +11,8 @@ var request = require('request');
 var cheerio = require('cheerio');
 
 var routes = require('./routes/index');
-var projects = require('./routes/projects');
+var indiegogo = require('./routes/indiegogo');
+var kickstarter = require('./routes/kickstarter');
 
 var app = express();
 
@@ -27,7 +28,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', routes);
-app.get('/:id', projects);
+app.get('/indiegogo/:id', indiegogo);
+app.get('/kickstarter/:userId/:projectName', kickstarter);
 
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {

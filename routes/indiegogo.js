@@ -2,9 +2,10 @@ var express = require('express');
 var request = require('request');
 var cheerio = require('cheerio');
 var router = express.Router();
+var moment = require('moment');
 
-/* GET project info. */
-router.get('/:id', function(req, res) {
+/* GET indiegogo project info. */
+router.get('/indiegogo/:id', function(req, res) {
   var url = 'http://indiegogo.com/projects/' + req.params.id;
 
   request(url, function(error, response, html){
@@ -27,12 +28,23 @@ router.get('/:id', function(req, res) {
       function trimString (str) {
         return str.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
       }
+      // Get time stuff
+      if($('.i-time-left span').last().text() !== '0 time left') {
+        var endDate = $('.i-funding-duration').text();
+        endDate = endDate.substring(endDate.indexOf('close on') + 1 );
+        endDate = moment(endDate).fromNow();
+      } else {
+        var endDate = 'This project ended';
+      }
+
+
       // Set up all the project info
       json.project.title = $('.i-campaign-page h1').text();
       json.project.url = url;
+      json.project.backers = $('span[data-tab-id="pledges"] .i-count').text();
       json.project.raised = $('.i-project-nutshell .i-balance .currency span').text();
       json.project.goal = $('.i-project-nutshell .i-raised .currency span').text();
-      json.project.timeLeft = $('.i-time-left span').last().text();
+      json.project.ends = endDate;
       json.project.percentRaised = Math.ceil(Number(json.project.raised.replace(/[^0-9\.]+/g,"")) / Number(json.project.goal.replace(/[^0-9\.]+/g,"")) * 100) + '%';
 
 
