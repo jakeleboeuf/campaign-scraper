@@ -6,7 +6,7 @@ An API for your indiegogo and kickstarter campaigns.
 
 
 ### [Example](http://scrape.jklb.co/example/kickstarter/332322466/gram-parsons-cosmic-revival-derry-down)
-Make requests to the scraper just like you would expect. Something like this little jQuery example should get you headed in the right direction:
+Make requests to the scraper just like you would expect. Something like this little jQuery example should get you headed in the right direction...
 
 ```html
 <!DOCTYPE html>
