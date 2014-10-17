@@ -34,5 +34,10 @@
     "morgan": "1.0.x",
     "request": "2.45.x",
     "static-favicon": "1.0.x"
+  },
+  "devDependencies": {
+    "chai": "^1.9.2",
+    "mocha": "^1.21.5",
+    "supertest": "^0.14.0"
   }
 }
