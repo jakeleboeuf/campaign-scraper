@@ -5,7 +5,7 @@ scrape-indiegogo
 An API for your indiegogo and kickstarter campaigns.
 
 
-### [Example](https://github.com/jakeleboeuf/scrape-indiegogo/blob/master/example/index.html)
+### [Example](http://scrape.jklb.co/example/kickstarter/332322466/gram-parsons-cosmic-revival-derry-down)
 Make requests to the scraper just like you would expect. Something like this little jQuery example should get you headed in the right direction:
 
 ```html

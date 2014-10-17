@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  h1= title
+  .main
+    h2 Grab some data from #{title}
+  #project
+    h3 Loading Project Details...
+  #perks
+    h3 Loading Perks...
+
+block scripts
+  script(src='/javascripts/libs/jquery.min.js')
+  script(src='/javascripts/example.js')
+
+block last
+  script.
+    $('document').ready(function(){
+      getCampaign('#{url}');
+    });

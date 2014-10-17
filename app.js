@@ -11,8 +11,8 @@ var request = require('request');
 var cheerio = require('cheerio');
 
 var routes = require('./routes/index');
-var indiegogo = require('./routes/indiegogo');
-var kickstarter = require('./routes/kickstarter');
+var indiegogo = require('./routes/api/indiegogo');
+var kickstarter = require('./routes/api/kickstarter');
 
 var app = express();
 
@@ -35,7 +35,9 @@ app.all('*', function(req, res, next) {
 });
 
 // Handle Routes
-app.get('/', routes);
+app.get('/', routes.index);
+app.get('/example/indiegogo/:projectName', routes.indiegogo);
+app.get('/example/kickstarter/:userId/:projectName', routes.kickstarter);
 app.get('/indiegogo/:projectName', indiegogo);
 app.get('/kickstarter/:userId/:projectName', kickstarter);
 
