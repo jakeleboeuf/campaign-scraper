@@ -1,5 +1,4 @@
 var express = require('express');
-var fs = require('fs');
 var request = require('request');
 var cheerio = require('cheerio');
 var router = express.Router();
@@ -53,7 +52,7 @@ router.get('/:id', function(req, res) {
       });
 
       // Send the data
-      res.send(JSON.stringify(json, null, 2));
+      res.json(json);
     } else {
       // Show the error page
       res.status(err.status || 404);
