@@ -21,7 +21,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "test": "mocha",
+    "test": "mocha -t 5000",
     "dev": "DEBUG=indiegogo ./bin/www"
   },
   "dependencies": {

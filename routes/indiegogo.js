@@ -1,12 +1,12 @@
 var express = require('express');
 var request = require('request');
 var cheerio = require('cheerio');
-var router = express.Router();
 var moment = require('moment');
+var router = express.Router();
 
 /* GET indiegogo project info. */
-router.get('/indiegogo/:id', function(req, res) {
-  var url = 'http://indiegogo.com/projects/' + req.params.id;
+router.get('/indiegogo/:projectName', function(req, res) {
+  var url = 'http://indiegogo.com/projects/' + req.params.projectName;
 
   request(url, function(error, response, html){
     if(!error){

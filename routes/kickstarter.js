@@ -1,8 +1,8 @@
 var express = require('express');
 var request = require('request');
 var cheerio = require('cheerio');
-var router = express.Router();
 var moment = require('moment');
+var router = express.Router();
 
 /* GET kickstarter project info. */
 router.get('/kickstarter/:userId/:projectName', function(req, res) {
