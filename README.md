@@ -1,6 +1,6 @@
-scrape-indiegogo
+campaign-scrape
 ================
-[ ![Codeship Status for jakeleboeuf/scrape-indiegogo](https://codeship.io/projects/6b1dd260-37e4-0132-e8f4-461894a5379e/status?branch=master)](https://codeship.io/projects/41841)
+[ ![Codeship Status for jakeleboeuf/campaign-scraper](https://codeship.io/projects/6b1dd260-37e4-0132-e8f4-461894a5379e/status?branch=master)](https://codeship.io/projects/41841)
 
 An API for your indiegogo and kickstarter campaigns.
 
