@@ -30,6 +30,7 @@ router.get('/:id', function(req, res) {
       }
       // Set up all the project info
       json.project.title = $('.i-campaign-page h1').text();
+      json.project.url = url;
       json.project.raised = $('.i-project-nutshell .i-balance .currency span').text();
       json.project.goal = $('.i-project-nutshell .i-raised .currency span').text();
       json.project.timeLeft = $('.i-time-left span').last().text();
