@@ -38,6 +38,8 @@ app.all('*', function(req, res, next) {
 app.get('/', routes.index);
 app.get('/example/indiegogo/:projectName', routes.indiegogo);
 app.get('/example/kickstarter/:userId/:projectName', routes.kickstarter);
+
+// Api routes
 app.get('/indiegogo/:projectName', indiegogo);
 app.get('/kickstarter/:userId/:projectName', kickstarter);
 
