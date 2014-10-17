@@ -6,22 +6,43 @@
   $(document).ready(function(){
     $.getJSON( "http://scrape.jklb.co/indiegogo/global-learning-xprize", function( data ) {
       var items = [];
-      $.each( data, function( key, val ) {
-        items.push( "<li id='" + key + "'>" + val + "</li>" );
+      var projectContainer = $("#project");
+      var perksContainer = $("#perks");
+      $.each( data, function( key, value ) {
+        if(key === 'project'){
+          $("#project").append('<ul></ul>').find('ul');
+          $.each( value, function( key, val ) {
+            projectContainer.append( "<li id='" + key + "'>"+ key + ': ' + val + "</li>" );
+          });
+        };
+        if(key === 'perks'){
+          $.each( value, function( key, val ) {
+            $('#perks').append('<ul></ul>').find('ul')
+            $.each( val, function( key, perk ) {
+              perksContainer.append( "<li id='" + key + "'>"+ key + ': ' + perk + "</li>" );
+            });
+          });
+        };
       });
-     
       $( "<ul/>", {
         "class": "my-new-list",
         html: items.join( "" )
       }).appendTo( "body" );
+      $('#project h3').html('Project Details');
+      $('#perks h3').html('Perks');
     });
   });
 </script>
 </head>
 <body>
-  <div id="div1">
+  <div id="main">
     <h2>Get the results please</h2>
   </div>
-  <div id="results"></di>
+  <div id="project">
+    <h3>Loading Project Details...</h3>
+  </div>
+  <div id="perks">
+    <h3>Loading Perks...</h3>
+  </div>
 </body>
 </html>
