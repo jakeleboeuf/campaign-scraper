@@ -1,0 +1,38 @@
+{
+  "name": "scrape-indiegogo",
+  "version": "0.0.0",
+  "description": "A node scraper for indiegogo",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:jakeleboeuf/scrape-indiegogo.git"
+  },
+  "keywords": [
+    "Scraper",
+    "Node",
+    "Indiegogo",
+    "API"
+  ],
+  "author": "Jake LeBoeuf",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jakeleboeuf/scrape-indiegogo/issues"
+  },
+  "homepage": "https://github.com/jakeleboeuf/scrape-indiegogo",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "test": "mocha",
+    "dev": "DEBUG=indiegogo ./bin/www"
+  },
+  "dependencies": {
+    "body-parser": "1.0.x",
+    "cheerio": "0.17.x",
+    "cookie-parser": "1.0.x",
+    "debug": "0.7.x",
+    "express": "4.2.x",
+    "jade": "1.3.x",
+    "morgan": "1.0.x",
+    "request": "2.45.x",
+    "static-favicon": "1.0.x"
+  }
+}
