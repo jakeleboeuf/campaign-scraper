@@ -4,15 +4,68 @@ scrape-indiegogo
 
 An API for your indiegogo and kickstarter campaigns.
 
-###Usage
-######Indiegogo Projects:
-You can make requests to the scraper just like you would expect. Something like this will get headed in the right direction:
+
+### [Example](https://github.com/jakeleboeuf/scrape-indiegogo/blob/master/example/index.html)
+Make requests to the scraper just like you would expect. Something like this little jQuery example should get you headed in the right direction:
 
 ```html
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+  $(document).ready(function(){
+    $.getJSON( "http://scrape.jklb.co/indiegogo/global-learning-xprize", function( data ) {
+      var items = [];
+      var projectContainer = $("#project");
+      var perksContainer = $("#perks");
+      $.each( data, function( key, value ) {
+        if(key === 'project'){
+          $("#project").append('<ul></ul>').find('ul');
+          $.each( value, function( key, val ) {
+            projectContainer.append( "<li id='" + key + "'>"+ key + ': ' + val + "</li>" );
+          });
+        };
+        if(key === 'perks'){
+          $.each( value, function( key, val ) {
+            $('#perks').append('<ul></ul>').find('ul')
+            $.each( val, function( key, perk ) {
+              perksContainer.append( "<li id='" + key + "'>"+ key + ': ' + perk + "</li>" );
+            });
+          });
+        };
+      });
+      $( "<ul/>", {
+        "class": "my-new-list",
+        html: items.join( "" )
+      }).appendTo( "body" );
+      $('#project h3').html('Project Details');
+      $('#perks h3').html('Perks');
+    });
+  });
+</script>
+</head>
+<body>
+  <div id="main">
+    <h2>Get the results please</h2>
+  </div>
+  <div id="project">
+    <h3>Loading Project Details...</h3>
+  </div>
+  <div id="perks">
+    <h3>Loading Perks...</h3>
+  </div>
+</body>
+</html>
 
 ```
 
-[scrape.jklb.co/YOUR-PROJECT-SLUG](http://scrape.jklb.co/indiegogo/global-learning-xprize) will give you a great JSON representation of your campaign.
+
+###Usage
+Nothing fancy here. Just a nice JSON representation of your fundraising campaign.
+######Indiegogo Projects:
+
+[scrape.jklb.co/indiegogo/YOUR-PROJECT-SLUG](http://scrape.jklb.co/indiegogo/global-learning-xprize) will give you a great JSON representation of your campaign.
 
 
 #####Example output @ [scrape.jklb.co/indiegogo/global-learning-xprize](http://scrape.jklb.co/indiegogo/global-learning-xprize)
@@ -60,38 +113,38 @@ You can make requests to the scraper just like you would expect. Something like 
 ```
 
 ######Kickstarter Projects:
-[scrape.jklb.co/YOUR-USERID/YOUR-PROJECT-SLUG](http://scrape.jklb.co/kickstarter/332322466/gram-parsons-cosmic-revival-derry-down) will give you a great JSON representation of your campaign.
+[scrape.jklb.co/YOUR-USER-ID/YOUR-PROJECT-SLUG](http://scrape.jklb.co/kickstarter/332322466/gram-parsons-cosmic-revival-derry-down) will give you a great JSON representation of your campaign.
 
-#####Example output @ [scrape.jklb.co/indiegogo/global-learning-xprize](http://scrape.jklb.co/indiegogo/global-learning-xprize)
+#####Example output @ [http://scrape.jklb.co/kickstarter/332322466/gram-parsons-cosmic-revival-derry-down](http://scrape.jklb.co/kickstarter/332322466/gram-parsons-cosmic-revival-derry-down)
 
 ```json
-project: {
-  title: "A N O M A L Y",
-  url: "http://kickstarter.com/projects/639662626/a-n-o-m-a-l-y",
-  backers: 654,
-  raised: "$67302",
-  goal: "$60000",
-  percentRaised: "112%",
-  ends: "a year ago"
+"project": {
+  "title": "A N O M A L Y",
+  "url": "http://kickstarter.com/projects/639662626/a-n-o-m-a-l-y",
+  "backers": 654,
+  "raised": "$67302",
+  "goal": "$60000",
+  "percentRaised": "112%",
+  "ends": "a year ago"
 },
-perks: [
+"perks": [
   {
-    title: "Pledge $5 or more",
-    amount: "$5",
-    url: "http://kickstarter.com/projects/639662626/a-n-o-m-a-l-y",
-    description: "Personal shout out on social media.",
-    deliveryDate: "Aug 2013",
-    claimed: 21,
-    available: "Unlimited"
+    "title": "Pledge $5 or more",
+    "amount": "$5",
+    "url": "http://kickstarter.com/projects/639662626/a-n-o-m-a-l-y",
+    "description": "Personal shout out on social media.",
+    "deliveryDate": "Aug 2013",
+    "claimed": 21,
+    "available": "Unlimited"
   },
   {
-    title: "Pledge $10 or more",
-    amount: "$10",
-    url: "http://kickstarter.com/projects/639662626/a-n-o-m-a-l-y",
-    description: "Downloadable link to original soundtrack. (private use only)",
-    deliveryDate: "Dec 2013",
-    claimed: 22,
-    available: "Unlimited"
+    "title": "Pledge $10 or more",
+    "amount": "$10",
+    "url": "http://kickstarter.com/projects/639662626/a-n-o-m-a-l-y",
+    "description": "Downloadable link to original soundtrack. (private use only)",
+    "deliveryDate": "Dec 2013",
+    "claimed": 22,
+    "available": "Unlimited"
   },
   {...}
 ]
