@@ -40,10 +40,15 @@ router.get('/kickstarter/:userId/:projectName', function(req, res) {
         url,
         'widget/video.html'
       ].join('/');
-      json.project.videoEmbed = [
+      json.project.videoEmbedCode = [
         '&lt;iframe frameborder="0" height="360" scrolling="no" src="',
         url,
         '/widget/video.html" width="480"&gt;&lt;/iframe&gt;'
+      ].join('');
+      json.project.videoEmbed = [
+        '<iframe frameborder="0" height="360" scrolling="no" src="',
+        url,
+        '/widget/video.html" width="480"></iframe>',
       ].join('');
       json.project.backers = $('*[data-backers-count]').data('backers-count');
       json.project.raised = '$' + Math.ceil($('.NS_projects__ecom #pledged').data('pledged'));
