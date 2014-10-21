@@ -59,6 +59,7 @@ router.get('/kickstarter/:userId/:projectName', function(req, res) {
         var amountAvailable = data.find('.limited-number').text().replace(/[^\w\s]/gi, '');
         var re = /(.*\ \s+)(.*)(\s+i\).*)/;
         var newtext = amountAvailable.replace(re, "$2");
+
         // Set up the perks objects
         var perk = {
           title: trimString(data.find('.mb1').text()),
