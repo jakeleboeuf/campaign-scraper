@@ -44,7 +44,7 @@ router.get('/kickstarter/:userId/:projectName', function(req, res) {
         '<code>',
         '<iframe frameborder="0" height="360" scrolling="no" src="',
         url,
-        '/widget/video.html" width="480"></iframe>'
+        '/widget/video.html" width="480"></iframe>',
         '</code>'
       ].join('');
       json.project.backers = $('*[data-backers-count]').data('backers-count');
