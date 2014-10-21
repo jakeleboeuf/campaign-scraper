@@ -43,8 +43,8 @@ router.get('/kickstarter/:userId/:projectName', function(req, res) {
       json.project.videoEmbed = [
         '<iframe frameborder="0" height="360" scrolling="no" src="',
         url,
-        'widget/video.html" width="480"></iframe>'
-      ].join('/');
+        '/widget/video.html" width="480"></iframe>'
+      ].join('');
       json.project.backers = $('*[data-backers-count]').data('backers-count');
       json.project.raised = '$' + Math.ceil($('.NS_projects__ecom #pledged').data('pledged'));
       json.project.goal = '$' + Math.ceil($('.NS_projects__ecom #pledged').data('goal'));
