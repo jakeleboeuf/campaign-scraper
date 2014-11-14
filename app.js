@@ -1,3 +1,7 @@
+// Require New Relic
+require('newrelic');
+
+// Go time
 var express = require('express');
 var path = require('path');
 var favicon = require('static-favicon');
