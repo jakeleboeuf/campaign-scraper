@@ -6,9 +6,13 @@ var router = express.Router();
 
 /* GET indiegogo project info. */
 router.get('/indiegogo/:projectName', function(req, res) {
-  var url = 'http://indiegogo.com/projects/' + req.params.projectName;
+  var options = {
+    method: "GET",
+    uri: "http://indiegogo.com/projects/" + req.params.projectName,
+    timeout: 5000
+  }
 
-  request(url, function(error, response, html){
+  request(options, function(error, response, html){
     if(!error){
       var $ = cheerio.load(html);
       if(!$('.i-campaign-page h1').text()) {
