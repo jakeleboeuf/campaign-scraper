@@ -19,7 +19,7 @@ router.get('/indiegogo/:projectName', function(req, res) {
         res.status(404);
         res.render('error', {
             message: 'Shoot, that project doesn\'t exist.',
-            error: 'Not Fount'
+            error: 'Not Found'
         });
         return;
       }
@@ -73,9 +73,9 @@ router.get('/indiegogo/:projectName', function(req, res) {
       if(error.message === 'ETIMEDOUT'){
         // Show the error page
         res.status(408);
-        res.render('error', {
-            message: error.message,
-            error: error
+        res.json({
+          status: 408,
+          message: 'Timout Error'
         });
       } else {
         // Show the error page
