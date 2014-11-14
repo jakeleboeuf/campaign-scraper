@@ -9,7 +9,7 @@ router.get('/indiegogo/:projectName', function(req, res) {
   var options = {
     method: "GET",
     uri: "http://indiegogo.com/projects/" + req.params.projectName,
-    timeout: 5000
+    timeout: 10
   }
 
   request(options, function(error, response, html){
