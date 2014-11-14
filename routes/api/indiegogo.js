@@ -9,7 +9,7 @@ router.get('/indiegogo/:projectName', function(req, res) {
   var options = {
     method: "GET",
     uri: "http://indiegogo.com/projects/" + req.params.projectName,
-    timeout: 200
+    timeout: 15000
   }
 
   request(options, function(error, response, html){
@@ -70,12 +70,21 @@ router.get('/indiegogo/:projectName', function(req, res) {
       // Send the data
       res.json(json);
     } else {
-      // Show the error page
-      res.status(error.status || 404);
-      res.render('error', {
-          message: error.message,
-          error: error
-      });
+      if(error.message === 'ETIMEDOUT'){
+        // Show the error page
+        res.status(408);
+        res.render('error', {
+            message: error.message,
+            error: error
+        });
+      } else {
+        // Show the error page
+        res.status(error.status || 404);
+        res.render('error', {
+            message: error.message,
+            error: error
+        });
+      }
     }
   })
 });
