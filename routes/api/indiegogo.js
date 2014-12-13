@@ -35,7 +35,7 @@ router.get('/indiegogo/:projectName', function(req, res) {
       // Get time stuff
       if($('.i-time-left span').last().text() !== '0 time left') {
         var endDate = $('.i-funding-duration').text();
-        endDate = endDate.substring(endDate.indexOf('close on') + 1 );
+        endDate = endDate.substring(endDate.indexOf('close on') + 9 );
         endDate = moment(endDate).fromNow();
       } else {
         var endDate = 'This project ended';
